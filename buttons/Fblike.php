@@ -1,8 +1,8 @@
 <?php
 
 class sso_Fblike extends Button {
-
-  /* @see http://developers.facebook.com/docs/reference/plugins/like/ for required code */
+  // css fix for fb .fb-like span{overflow:visible !important; width:450px !important; margin-right:-375px;}
+  // @see http://developers.facebook.com/docs/reference/plugins/like/ for required code
   public function add_shortcode(){
     global $post;
     return sprintf('<div class="fb-like" data-href="http://bcooling.com.au" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>', get_permalink($post->ID));

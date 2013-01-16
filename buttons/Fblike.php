@@ -5,7 +5,7 @@ class sso_Fblike extends Button {
   // @see http://developers.facebook.com/docs/reference/plugins/like/ for required code
   public function add_shortcode(){
     global $post;
-    return sprintf('<div class="fb-like" data-href="http://bcooling.com.au" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>', get_permalink($post->ID));
+    return sprintf('<div class="fb-like" data-href="%s" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>', get_permalink($post->ID));
   }
 
   /* ideally right after the opening <body> tag. */

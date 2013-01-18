@@ -24,13 +24,23 @@ SCRIPT;
 
   public function wp_head(){
     global $post;
+    // Open graph corresponds to a single page - not applicable for listing pages with mulitple like buttons 
+    if ( (!is_single($post)) || (!is_page(is_page($post))) ) return false;
 $tpl = <<<TPL
 <meta property="og:title" content="%s" />
 <meta property="og:site_name" content="%s" />
 <meta property="og:image" content="%s" />
 TPL;
-    $full = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
-    return sprintf("\n" . $tpl . "\n", $post->post_title, get_bloginfo('name'), $full[0]);
+    if ($imageid = get_post_thumbnail_id( $post->ID )){
+      $full = wp_get_attachment_image_src( $imageid, 'full' );  
+    }
+    else {
+      $attachments = get_children(array('post_parent' => $post->ID, 'post_type' => 'attachment',
+          'post_mime_type' => 'image', 'orderby' => 'menu_order', 'order' => 'ASC'));
+      $image = end(array_reverse($attachments));
+      $full = wp_get_attachment_image_src( $image->ID, 'full' );
+    }
+    return sprintf("\n" . $tpl . "\n", $post->post_title, get_bloginfo('name'), esc_attr($full[0]));
   }
 
 }

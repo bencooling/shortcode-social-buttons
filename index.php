@@ -23,6 +23,7 @@ define('SIMPLESOCIAL_DIR_PATH', plugin_dir_path(__FILE__));
 // Required files
 require_once( SIMPLESOCIAL_DIR_PATH . '/buttons/Button.php' );
 require_once( SIMPLESOCIAL_DIR_PATH . '/buttons/Fblike.php' );
+require_once( SIMPLESOCIAL_DIR_PATH . '/buttons/Fbfollow.php' );
 require_once( SIMPLESOCIAL_DIR_PATH . '/buttons/Pinit.php' );
 
 // Determine context for plugin

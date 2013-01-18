@@ -2,7 +2,7 @@
 
 class sso_Public {
   
-  protected $_btns = array('pinit', 'fblike');
+  protected $_btns = array('pinit', 'fblike', 'fbfollow');
 
   public function __construct(){
     add_action('wp_head', array($this, 'wp_head'));
